@@ -14,18 +14,15 @@ module Tilt
       require_template_library 'builder'
     end
 
-    def prepare; end
-
-    def evaluate(scope, locals, &block)
-      return super(scope, locals, &block) if data.respond_to?(:to_str)
-      xml = ::Builder::XmlMarkup.new(:indent => 2)
-      data.call(xml)
-      xml.target!
+    def prepare
+      options[:indent] ||= 2
     end
 
-    def precompiled_preamble(locals)
-      return super if locals.include? :xml
-      "xml = ::Builder::XmlMarkup.new(:indent => 2)\n#{super}"
+    def evaluate(scope, locals, &block)
+      xml = (locals[:xml] ||= ::Builder::XmlMarkup.new(options))
+      return super(scope, locals, &block) if data.respond_to?(:to_str)
+      data.call(xml)
+      xml.target!
     end
 
     def precompiled_postamble(locals)
