@@ -59,11 +59,11 @@ Support for these template engines is included with the package:
 Every supported template engine has a *maintainer*. Note that this is the
 maintainer of the Tilt integration, not the maintainer of the template engine
 itself. The maintainer is responsible for providing an adequate integration and
-keeping backwards compatibility across Tilt version. Some integrations are
+keeping backwards compatibility across Tilt versions. Some integrations are
 maintained by the *community*, which is handled in the following way:
 
 - The Tilt team will liberally accept pull requests against the template
-  integration. It's up the community as a whole to make sure the integration
+  integration. It's up to the community as a whole to make sure the integration
   stays consistent and backwards compatible over time.
 - Test failures in community-maintained integrations will not be prioritized by
   the Tilt team and a new version of Tilt might be released even though these
